@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Личный сайт студента GeekBrains | Угадайка мультиплеер</title>
+<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<script type="text/javascript">
+
+var x1;
+var x2;
+
+var try1 = 0; 
+var try2 = 0; 
+
+var min = 0;
+var max = 20;
+
+var gamePlay1 = 0; 
+var gamePlay2 = 0; 
+
+
+function GetRand(min1,max1)
+{ var a;
+
+   if (max1<min1)
+      { a = max1;
+        max1 = min1; 
+        min1 = a; }
+
+  return Math.floor(Math.random() * (max1 - min1 + 1)) + min1; }
+
+
+function CheckButtonClick1()
+{
+if (gamePlay1 == 0)
+ alert("Вы пока не начали игру.");
+else
+ {
+	try1++;
+	
+	var userAnswer = document.getElementById('version1').value;
+
+
+	if (userAnswer>x1)
+	 alert("Вы  перегадали");
+	else
+	 if (userAnswer<x1)
+	   alert("Вы  недогадали");
+	 else
+	   {
+	    alert("Вы  угадали! Компьютер загадал "+x1+"! Вы использовали " + try1 + " попыток.");
+	    gamePlay1 = 0;
+	    try1 = 0;
+   	   }
+ }
+document.getElementById('version1').value='';
+}
+
+
+function CheckButtonClick2()
+{
+if (gamePlay2 == 0)
+ alert("Вы пока не начали игру.");
+else
+ {
+	try2++;
+	
+	var userAnswer = document.getElementById('version2').value;
+
+
+	if (userAnswer>x2)
+	 alert("Вы  перегадали");
+	else
+	 if (userAnswer<x2)
+	   alert("Вы  недогадали");
+	 else
+	   {
+	    alert("Вы  угадали! Компьютер загадал "+x2+"! Вы использовали " + try2 + " попыток.");
+	    gamePlay2 = 0;
+	    try2 = 0;
+   	   }
+ }
+document.getElementById('version2').value='';
+}
+
+
+function StartGuessButtonClick1()
+{ x1 = GetRand(min,max);
+  gamePlay1 = 1;
+  document.getElementById('version1').value='';
+  alert("Компьютер загадал число от "+min+" до "+max+", попробуйте угадать."); }
+
+function StartGuessButtonClick2()
+{ x2 = GetRand(min,max);
+  gamePlay2 = 1;
+  document.getElementById('version2').value='';
+  alert("Компьютер загадал число от "+min+" до "+max+", попробуйте угадать."); }
+
+
+
+</script>
+</head>
+<body> <!-- ******************** BODY ******************** -->
+<div id="header">
+<a href="index.html">Главная</a><span>|</span> 
+<a href="riddles.html">Загадки</a><span>|</span> 
+<a href="guess.html">Угадайка</a><span>|</span> 
+<a href="#">Угадайка мультиплеер</a> 
+</div>
+ 
+<div id="content">
+       <center>
+<h3>Угадайка мультиплеер</h3>
+	<table width=1000>
+	  <tr>
+	    <td>Игрок 1</td><td align="right">Игрок 2</td>
+	  </tr>
+	  <tr>
+	    <td>  <!-- Игрок 1 -->
+    		 <input type="button" id="StartGuessButton1" value="Играть" onclick="StartGuessButtonClick1()"><br><br><br>
+            </td>
+             <td align="right">  <!-- Игрок 2 -->
+    		 <input type="button" id="StartGuessButton2" value="Играть" onclick="StartGuessButtonClick2()"><br><br><br>
+             </td>
+	  </tr>
+
+	  <tr>
+	    <td>  <!-- Игрок 1 -->
+    		 	Ваша версия: <input type="text" id="version1"><br><br><br>
+            </td>
+             <td align="right">  <!-- Игрок 2 -->
+    		 	Ваша версия: <input type="text" id="version2"><br><br><br>
+             </td>
+	  </tr>
+
+	  <tr>
+	    <td>  <!-- Игрок 1 -->
+    		     <input type="button" id="CheckButton1" onclick="CheckButtonClick1()" value="Проверить версию">
+            </td>
+             <td align="right">  <!-- Игрок 2 -->
+    		     <input type="button" id="CheckButton2" onclick="CheckButtonClick2()" value="Проверить версию">
+             </td>
+	  </tr>
+	</table>
+       </center>
+</div>
+<div id="footer"> 
+    Copyright © 2016 <a href="https://geekbrains.ru/" target="_blank">GeekBrains</a> 
+</div> 
+</body>
+</html>

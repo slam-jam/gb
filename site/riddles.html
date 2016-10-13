@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Личный сайт студента GeekBrains | загадки</title>
+<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<script type="text/javascript">
+
+function checkAnswer(id, trueAnswer) 
+{ var userAnswer = document.getElementById(id).value;
+
+  if (userAnswer.toLowerCase() == trueAnswer) 
+    return true;
+  else 
+    return false;
+} 
+
+function checkAnswers() 
+{ 
+     var goodAnswers = 0;
+ 
+     if (checkAnswer('r1', 'лук')==true)  
+          goodAnswers++;
+   
+     if (checkAnswer('r2', 'молоток'))  
+          goodAnswers++; 
+
+     if (checkAnswer('r3', 'в'))  
+          goodAnswers++; 
+   
+     if (goodAnswers == 0)  
+           alert('Вы ничего не угадали :,('); 
+ 
+      else  
+	if (goodAnswers == 3)
+	  alert('Вы угадали всё!!!');  
+	else
+          alert('Количество правильных ответов: ' + goodAnswers);  
+
+} 
+</script>
+</head>
+<body> <!-- ******************** BODY ******************** -->
+<div id="header">
+<a href="index.html">Главная</a><span>|</span> 
+<a href="#">Загадки</a><span>|</span> 
+<a href="guess.html">Угадайка</a><span>|</span> 
+<a href="multiguess.html">Угадайка мультиплеер</a> 
+</div>
+
+
+
+	<div id="content"> 
+        
+        <h3>Загадки</h3> 
+	
+	<p>Сидит дед, во сто шуб одет. Кто его раздевает – тот слезы проливает.</p>
+	<input type="text" id="r1">
+	<p>Сам худ, голова с пуд.</p>
+	<input type="text" id="r2">
+	<p>Чего нет в России, найдется в Москве. Нет в Петербурге, а есть в Неве.</p>
+	<input type="text" id="r3">
+	<br><br><br>
+	<input type="button" id="check1" onclick="checkAnswers()" value="Проверить ответы"><br>
+	
+	</div>
+
+
+<div id="footer"> 
+    Copyright © 2016 <a href="https://geekbrains.ru/" target="_blank">GeekBrains</a> 
+</div> 
+</body>
+</html>

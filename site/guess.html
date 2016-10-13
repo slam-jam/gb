@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Личный сайт студента GeekBrains | Угадайка</title>
+<link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<script type="text/javascript">
+
+var x;
+var try1 = 0; 
+var min = 0;
+var max = 20;
+var gamePlay = 0; 
+
+
+function GetRand(min1,max1)
+{ var a;
+
+   if (max1<min1)
+      { a = max1;
+        max1 = min1; 
+        min1 = a; }
+
+  return Math.floor(Math.random() * (max1 - min1 + 1)) + min1; }
+
+
+function CheckButtonClick()
+{
+if (gamePlay == 0)
+ alert("Вы пока не начали игру.");
+else
+ {
+	try1++;
+	
+	var userAnswer = document.getElementById('version').value;
+
+
+	if (userAnswer>x)
+	 alert("Вы  перегадали");
+	else
+	 if (userAnswer<x)
+	   alert("Вы  недогадали");
+	 else
+	   {
+	    alert("Вы  угадали! Компьютер загадал "+x+"! Вы использовали " + try1 + " попыток.");
+	    gamePlay = 0;
+	    try1 = 0;
+   	   }
+ }
+document.getElementById('version').value='';
+}
+
+
+function StartGuessButtonClick()
+{ x = GetRand(min,max);
+  gamePlay = 1;
+  document.getElementById('version').value='';
+  alert("Компьютер загадал число от "+min+" до "+max+", попробуйте угадать."); }
+
+
+</script>
+</head>
+<body> <!-- ******************** BODY ******************** -->
+<div id="header">
+<a href="index.html">Главная</a><span>|</span> 
+<a href="riddles.html">Загадки</a><span>|</span> 
+<a href="#">Угадайка</a><span>|</span> 
+<a href="multiguess.html">Угадайка мультиплеер</a> 
+</div>
+
+<div id="content"> 
+     <h3>Угадайка</h3>
+
+
+	<input type="button" id="StartGuessButton" value="Играть" onclick="StartGuessButtonClick()"><br><br><br>
+
+	Ваша версия: <input type="text" id="version"><br><br><br>
+
+	<input type="button" id="CheckButton" onclick="CheckButtonClick()" value="Проверить версию">
+
+</div> 
+
+<div id="footer"> 
+    Copyright © 2016 <a href="https://geekbrains.ru/" target="_blank">GeekBrains</a> 
+</div> 
+</body>
+</html>
